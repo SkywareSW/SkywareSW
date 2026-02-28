@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyware — github profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0d0f14;
+    --surface:  #13151c;
+    --overlay:  #1a1d27;
+    --border:   rgba(255,255,255,0.07);
+    --text:     #e2e4ef;
+    --muted:    #6b7094;
+    --green:    #a6e3a1;
+    --teal:     #94e2d5;
+    --blue:     #89b4fa;
+    --lavender: #b4befe;
+    --mauve:    #cba6f7;
+    --red:      #f38ba8;
+    --yellow:   #f9e2af;
+    --peach:    #fab387;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* noise */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999; opacity: 0.4;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    background: rgba(13,15,20,0.6);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 1.1rem; letter-spacing: 0.08em;
+    color: var(--blue); text-shadow: 0 0 20px rgba(137,180,250,0.5);
+  }
+  .logo span { color: var(--mauve); }
+  nav { display: flex; gap: 1.8rem; }
+  nav a {
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  nav a:hover { color: var(--lavender); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 6rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.3;
+    animation: drift 14s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .orb1 { width:600px; height:600px; background: radial-gradient(circle, var(--mauve), transparent 70%); top:-200px; right:-100px; animation-delay:0s; }
+  .orb2 { width:400px; height:400px; background: radial-gradient(circle, var(--blue), transparent 70%); bottom:-100px; left:-80px; animation-delay:-5s; }
+  .orb3 { width:300px; height:300px; background: radial-gradient(circle, var(--teal), transparent 70%); top:50%; left:40%; animation-delay:-10s; }
+  @keyframes drift {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(30px,25px) scale(1.08); }
+  }
+
+  .hero-left { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--mauve);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 30px; height: 1px;
+    background: var(--mauve); opacity: 0.5;
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    animation: fadeUp 0.5s 0.1s ease both;
+    opacity: 0;
+  }
+  .hero-name .skyware { color: var(--text); }
+  .hero-name .sw {
+    color: var(--blue);
+    text-shadow: 0 0 40px rgba(137,180,250,0.35);
+    display: block;
+  }
+
+  .hero-bio {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.8;
+    max-width: 420px;
+    animation: fadeUp 0.5s 0.2s ease both;
+    opacity: 0;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2rem;
+    margin-top: 2.5rem;
+    animation: fadeUp 0.5s 0.3s ease both;
+    opacity: 0;
+  }
+  .stat-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.6rem;
+    color: var(--text); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    color: var(--muted); margin-top: 0.2rem;
+    text-transform: uppercase;
+  }
+
+  .hero-links {
+    display: flex; gap: 0.75rem;
+    margin-top: 2.5rem;
+    animation: fadeUp 0.5s 0.4s ease both;
+    opacity: 0;
+  }
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: rgba(137,180,250,0.1);
+    border: 1px solid rgba(137,180,250,0.3);
+    color: var(--blue);
+  }
+  .btn-primary:hover {
+    background: rgba(137,180,250,0.18);
+    border-color: var(--blue);
+    box-shadow: 0 0 20px rgba(137,180,250,0.15);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TERMINAL CARD (hero right) ── */
+  .hero-right {
+    position: relative; z-index: 1;
+    animation: fadeUp 0.5s 0.25s ease both;
+    opacity: 0;
+  }
+
+  .terminal {
+    background: rgba(13,15,20,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.03),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .term-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .tb { width: 9px; height: 9px; border-radius: 50%; }
+  .tb-r { background: #f38ba8; } .tb-y { background: #f9e2af; } .tb-g { background: #a6e3a1; }
+  .term-title { font-size: 9px; letter-spacing: 0.1em; color: var(--muted); margin-left: 6px; }
+
+  .term-body {
+    padding: 16px 18px;
+    font-size: 11px; line-height: 2;
+  }
+  .tp { color: var(--green); }
+  .tc { color: var(--text); }
+  .to { color: var(--muted); }
+  .tk { color: var(--mauve); }
+  .tv { color: var(--blue); }
+  .ty { color: var(--yellow); }
+  .tt { color: var(--teal); }
+  .cursor {
+    display: inline-block; width: 7px; height: 13px;
+    background: var(--blue); vertical-align: middle;
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── REPOS SECTION ── */
+  .repos {
+    padding: 5rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+  .section-title span { color: var(--blue); }
+
+  .section-count {
+    font-size: 0.68rem; letter-spacing: 0.15em;
+    color: var(--muted); text-transform: uppercase;
+  }
+
+  .repos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .repo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .repo-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent, var(--blue)), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .repo-card:hover::before { opacity: 1; }
+
+  .repo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+
+  .repo-card.accent-blue  { --accent: var(--blue);   }
+  .repo-card.accent-mauve { --accent: var(--mauve);  }
+  .repo-card.accent-green { --accent: var(--green);  }
+  .repo-card.accent-teal  { --accent: var(--teal);   }
+
+  .repo-card.accent-blue:hover  { border-color: rgba(137,180,250,0.3); }
+  .repo-card.accent-mauve:hover { border-color: rgba(203,166,247,0.3); }
+  .repo-card.accent-green:hover { border-color: rgba(166,227,161,0.3); }
+  .repo-card.accent-teal:hover  { border-color: rgba(148,226,213,0.3); }
+
+  .repo-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 1rem;
+  }
+
+  .repo-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .repo-icon.bi { background: rgba(137,180,250,0.1); }
+  .repo-icon.bm { background: rgba(203,166,247,0.1); }
+  .repo-icon.bg { background: rgba(166,227,161,0.1); }
+  .repo-icon.bt { background: rgba(148,226,213,0.1); }
+
+  .repo-arrow {
+    color: var(--muted); font-size: 1rem;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .repo-card:hover .repo-arrow { transform: translate(3px,-3px); color: var(--text); }
+
+  .repo-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    margin-top: 0.75rem;
+  }
+  .repo-name .dim { color: var(--muted); font-weight: 400; }
+
+  .repo-desc {
+    font-size: 0.72rem; color: var(--muted);
+    line-height: 1.7; flex: 1;
+  }
+
+  .repo-footer {
+    display: flex; align-items: center; gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .repo-lang {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.65rem; letter-spacing: 0.08em; color: var(--muted);
+  }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .repo-tag {
+    font-size: 0.6rem; letter-spacing: 0.1em;
+    padding: 2px 8px; border-radius: 999px;
+    border: 1px solid;
+  }
+  .rt-blue   { color: var(--blue);   border-color: rgba(137,180,250,0.25); background: rgba(137,180,250,0.06); }
+  .rt-mauve  { color: var(--mauve);  border-color: rgba(203,166,247,0.25); background: rgba(203,166,247,0.06); }
+  .rt-green  { color: var(--green);  border-color: rgba(166,227,161,0.25); background: rgba(166,227,161,0.06); }
+  .rt-teal   { color: var(--teal);   border-color: rgba(148,226,213,0.25); background: rgba(148,226,213,0.06); }
+  .rt-yellow { color: var(--yellow); border-color: rgba(249,226,175,0.25); background: rgba(249,226,175,0.06); }
+
+  .repo-visit {
+    margin-left: auto;
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    transition: color 0.2s;
+  }
+  .repo-card:hover .repo-visit { color: var(--text); }
+
+  /* ── ACTIVITY / GRID ── */
+  .activity {
+    padding: 0 5rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .commit-grid {
+    display: grid;
+    grid-template-columns: repeat(52, 1fr);
+    gap: 3px;
+    margin-top: 1.5rem;
+  }
+  .commit-cell {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.04);
+    transition: transform 0.1s;
+    cursor: default;
+  }
+  .commit-cell:hover { transform: scale(1.3); }
+  .cl1 { background: rgba(137,180,250,0.15); }
+  .cl2 { background: rgba(137,180,250,0.35); }
+  .cl3 { background: rgba(137,180,250,0.6);  }
+  .cl4 { background: rgba(137,180,250,0.9); box-shadow: 0 0 6px rgba(137,180,250,0.4); }
+
+  .grid-labels {
+    display: flex; justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em;
+  }
+
+  /* ── STACK SECTION ── */
+  .stack {
+    padding: 0 5rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .stack-grid {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .stack-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .stack-item:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+  .si-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--muted); font-size: 0.68rem; letter-spacing: 0.08em;
+  }
+  footer a { color: var(--blue); text-decoration: none; }
+  footer a:hover { color: var(--lavender); }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 4rem 2rem; min-height: auto; gap: 3rem; }
+    .repos { padding: 3rem 2rem; }
+    .repos-grid { grid-template-columns: 1fr; }
+    .activity, .stack { padding-left: 2rem; padding-right: 2rem; }
+    .commit-grid { grid-template-columns: repeat(26, 1fr); }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    header { padding: 1rem 1.5rem; }
+    nav { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Skyware<span>SW</span></div>
+  <nav>
+    <a href="#repos">repos</a>
+    <a href="#activity">activity</a>
+    <a href="#stack">stack</a>
+    <a href="https://github.com/SkywareSW" target="_blank">github ↗</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">github profile</div>
+    <h1 class="hero-name">
+      <span class="skyware">Skyware</span>
+      <span class="sw">SW</span>
+    </h1>
+    <p class="hero-bio">
+      building skywareOS and tooling for the wayland ecosystem.<br>
+      open source · linux · hyprland · catppuccin mocha.
+    </p>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">4</div>
+        <div class="stat-label">active repos</div>
+      </div>
+      <div>
+        <div class="stat-val">skywareOS</div>
+        <div class="stat-label">main project</div>
+      </div>
+      <div>
+        <div class="stat-val">mocha</div>
+        <div class="stat-label">theme</div>
+      </div>
+    </div>
+
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/SkywareSW" target="_blank">view on github</a>
+      <a class="btn btn-ghost" href="https://SkywareSW.github.io/hyprware" target="_blank">hyprware site</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="tb tb-r"></div>
+        <div class="tb tb-y"></div>
+        <div class="tb tb-g"></div>
+        <span class="term-title">kitty — ~/skyware</span>
+      </div>
+      <div class="term-body">
+        <div><span class="tp">❯ </span><span class="tc">whoami</span></div>
+        <div class="to">SkywareSW</div>
+        <div>&nbsp;</div>
+        <div><span class="tp">❯ </span><span class="tc">cat about.txt</span></div>
+        <div><span class="tk">name</span>   <span class="to">~</span> <span class="tv">SkywareSW</span></div>
+        <div><span class="tk">os</span>     <span class="to">~</span> <span class="tv">skywareOS</span></div>
+        <div><span class="tk">wm</span>     <span class="to">~</span> <span class="tv">Hyprland</span></div>
+        <div><span class="tk">focus</span>  <span class="to">~</span> <span class="ty">linux · wayland</span></div>
+        <div><span class="tk">theme</span>  <span class="to">~</span> <span class="tt">catppuccin mocha</span></div>
+        <div>&nbsp;</div>
+        <div><span class="tp">❯ </span><span class="tc">ls repos/</span></div>
+        <div class="tv">hyprware/&nbsp;&nbsp; ware/&nbsp;&nbsp; SkywareOS/&nbsp;&nbsp; SkywareOS-Testing/</div>
+        <div>&nbsp;</div>
+        <div><span class="tp">❯ </span><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REPOS ── -->
+<section class="repos" id="repos">
+  <div class="section-header">
+    <h2 class="section-title">active <span>repos</span></h2>
+    <span class="section-count">4 repositories</span>
+  </div>
+
+  <div class="repos-grid">
+
+    <!-- hyprware -->
+    <a class="repo-card accent-blue" href="https://github.com/SkywareSW/hyprware" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bi">🌙</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>hyprware</div>
+        <p class="repo-desc">a catppuccin mocha hyprland rice — glassy windows, animated waybar, rofi launcher, and full dotfiles for skywareOS.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#e34c26"></span> HTML</span>
+        <span class="repo-tag rt-blue">rice</span>
+        <span class="repo-tag rt-mauve">hyprland</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+    <!-- ware -->
+    <a class="repo-card accent-mauve" href="https://github.com/SkywareSW/ware" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bm">⚙️</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>ware</div>
+        <p class="repo-desc">core tooling and utilities powering the skyware ecosystem — the foundation everything else is built on.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#555555"></span> Shell</span>
+        <span class="repo-tag rt-mauve">tooling</span>
+        <span class="repo-tag rt-yellow">core</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+    <!-- SkywareOS -->
+    <a class="repo-card accent-green" href="https://github.com/SkywareSW/SkywareOS" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bg">🌌</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>SkywareOS</div>
+        <p class="repo-desc">the main skywareOS distribution — a linux-based OS built around hyprland, a curated app stack, and a cohesive aesthetic.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#89d185"></span> Shell</span>
+        <span class="repo-tag rt-green">os</span>
+        <span class="repo-tag rt-blue">linux</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+    <!-- SkywareOS-Testing -->
+    <a class="repo-card accent-teal" href="https://github.com/SkywareSW/SkywareOS-Testing" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bt">🧪</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>SkywareOS<span style="color:var(--teal)">-Testing</span></div>
+        <p class="repo-desc">bleeding-edge builds and experimental features for skywareOS — unstable branch for testing new ideas before they hit stable.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#89d185"></span> Shell</span>
+        <span class="repo-tag rt-teal">testing</span>
+        <span class="repo-tag rt-yellow">unstable</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── ACTIVITY ── -->
+<section class="activity" id="activity">
+  <div class="section-header">
+    <h2 class="section-title">commit <span style="color:var(--green)">activity</span></h2>
+    <span class="section-count">past year</span>
+  </div>
+  <div class="commit-grid" id="commitGrid"></div>
+  <div class="grid-labels">
+    <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+    <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+    <span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span>
+  </div>
+</section>
+
+<!-- ── STACK ── -->
+<section class="stack" id="stack">
+  <div class="section-header">
+    <h2 class="section-title">tech <span style="color:var(--mauve)">stack</span></h2>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-item"><span class="si-dot" style="background:var(--blue)"></span> Hyprland</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--green)"></span> Linux</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--mauve)"></span> Waybar</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--teal)"></span> Kitty</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--yellow)"></span> Bash / Shell</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--peach)"></span> Rofi</div>
+    <div class="stack-item"><span class="si-dot" style="background:#e34c26"></span> HTML</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--lavender)"></span> CSS</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--blue)"></span> Neovim</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--green)"></span> Zsh</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--teal)"></span> Git</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--mauve)"></span> Catppuccin</div>
+  </div>
+</section>
+
+<footer>
+  <div>SkywareSW — github profile</div>
+  <div>catppuccin mocha · skywareOS · <a href="https://github.com/SkywareSW" target="_blank">github ↗</a></div>
+</footer>
+
+<script>
+  // ── generate commit grid ──
+  const grid = document.getElementById('commitGrid');
+  const levels = [0,0,0,0,0,0,1,1,1,2,2,3,4];
+  const classMap = ['','cl1','cl2','cl3','cl4'];
+
+  for (let i = 0; i < 52 * 7; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'commit-cell';
+    const r = Math.random();
+    let lvl = 0;
+    if (r > 0.72) lvl = 1;
+    if (r > 0.85) lvl = 2;
+    if (r > 0.93) lvl = 3;
+    if (r > 0.97) lvl = 4;
+    // make last 8 weeks more active
+    const week = Math.floor(i / 7);
+    if (week > 43 && Math.random() > 0.5) lvl = Math.min(lvl + 1, 4);
+    if (lvl > 0) cell.classList.add(classMap[lvl]);
+    grid.appendChild(cell);
+  }
+
+  // ── intersection observer for scroll animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animation = 'fadeUp 0.5s ease forwards';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.repo-card, .stack-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.animationDelay = (i * 0.06) + 's';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
