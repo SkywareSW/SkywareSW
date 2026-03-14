@@ -291,15 +291,21 @@
     box-shadow: 0 20px 50px rgba(0,0,0,0.4);
   }
 
-  .repo-card.accent-blue  { --accent: var(--blue);   }
-  .repo-card.accent-mauve { --accent: var(--mauve);  }
-  .repo-card.accent-green { --accent: var(--green);  }
-  .repo-card.accent-teal  { --accent: var(--teal);   }
+  .repo-card.accent-blue    { --accent: var(--blue);     }
+  .repo-card.accent-mauve   { --accent: var(--mauve);    }
+  .repo-card.accent-green   { --accent: var(--green);    }
+  .repo-card.accent-teal    { --accent: var(--teal);     }
+  .repo-card.accent-peach   { --accent: var(--peach);    }
+  .repo-card.accent-lavender{ --accent: var(--lavender); }
+  .repo-card.accent-red     { --accent: var(--red);      }
 
-  .repo-card.accent-blue:hover  { border-color: rgba(137,180,250,0.3); }
-  .repo-card.accent-mauve:hover { border-color: rgba(203,166,247,0.3); }
-  .repo-card.accent-green:hover { border-color: rgba(166,227,161,0.3); }
-  .repo-card.accent-teal:hover  { border-color: rgba(148,226,213,0.3); }
+  .repo-card.accent-blue:hover     { border-color: rgba(137,180,250,0.3); }
+  .repo-card.accent-mauve:hover    { border-color: rgba(203,166,247,0.3); }
+  .repo-card.accent-green:hover    { border-color: rgba(166,227,161,0.3); }
+  .repo-card.accent-teal:hover     { border-color: rgba(148,226,213,0.3); }
+  .repo-card.accent-peach:hover    { border-color: rgba(250,179,135,0.3); }
+  .repo-card.accent-lavender:hover { border-color: rgba(180,190,254,0.3); }
+  .repo-card.accent-red:hover      { border-color: rgba(243,139,168,0.3); }
 
   .repo-top {
     display: flex; align-items: flex-start;
@@ -313,10 +319,13 @@
     font-size: 18px;
     flex-shrink: 0;
   }
-  .repo-icon.bi { background: rgba(137,180,250,0.1); }
-  .repo-icon.bm { background: rgba(203,166,247,0.1); }
-  .repo-icon.bg { background: rgba(166,227,161,0.1); }
-  .repo-icon.bt { background: rgba(148,226,213,0.1); }
+  .repo-icon.bi  { background: rgba(137,180,250,0.1); }
+  .repo-icon.bm  { background: rgba(203,166,247,0.1); }
+  .repo-icon.bg  { background: rgba(166,227,161,0.1); }
+  .repo-icon.bt  { background: rgba(148,226,213,0.1); }
+  .repo-icon.bp  { background: rgba(250,179,135,0.1); }
+  .repo-icon.bl  { background: rgba(180,190,254,0.1); }
+  .repo-icon.br  { background: rgba(243,139,168,0.1); }
 
   .repo-arrow {
     color: var(--muted); font-size: 1rem;
@@ -354,11 +363,14 @@
     padding: 2px 8px; border-radius: 999px;
     border: 1px solid;
   }
-  .rt-blue   { color: var(--blue);   border-color: rgba(137,180,250,0.25); background: rgba(137,180,250,0.06); }
-  .rt-mauve  { color: var(--mauve);  border-color: rgba(203,166,247,0.25); background: rgba(203,166,247,0.06); }
-  .rt-green  { color: var(--green);  border-color: rgba(166,227,161,0.25); background: rgba(166,227,161,0.06); }
-  .rt-teal   { color: var(--teal);   border-color: rgba(148,226,213,0.25); background: rgba(148,226,213,0.06); }
-  .rt-yellow { color: var(--yellow); border-color: rgba(249,226,175,0.25); background: rgba(249,226,175,0.06); }
+  .rt-blue     { color: var(--blue);     border-color: rgba(137,180,250,0.25); background: rgba(137,180,250,0.06); }
+  .rt-mauve    { color: var(--mauve);    border-color: rgba(203,166,247,0.25); background: rgba(203,166,247,0.06); }
+  .rt-green    { color: var(--green);    border-color: rgba(166,227,161,0.25); background: rgba(166,227,161,0.06); }
+  .rt-teal     { color: var(--teal);     border-color: rgba(148,226,213,0.25); background: rgba(148,226,213,0.06); }
+  .rt-yellow   { color: var(--yellow);   border-color: rgba(249,226,175,0.25); background: rgba(249,226,175,0.06); }
+  .rt-peach    { color: var(--peach);    border-color: rgba(250,179,135,0.25); background: rgba(250,179,135,0.06); }
+  .rt-lavender { color: var(--lavender); border-color: rgba(180,190,254,0.25); background: rgba(180,190,254,0.06); }
+  .rt-red      { color: var(--red);      border-color: rgba(243,139,168,0.25); background: rgba(243,139,168,0.06); }
 
   .repo-visit {
     margin-left: auto;
@@ -479,7 +491,7 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-val">4</div>
+        <div class="stat-val">7</div>
         <div class="stat-label">active repos</div>
       </div>
       <div>
@@ -519,7 +531,8 @@
         <div><span class="tk">theme</span>  <span class="to">~</span> <span class="tt">catppuccin mocha</span></div>
         <div>&nbsp;</div>
         <div><span class="tp">❯ </span><span class="tc">ls repos/</span></div>
-        <div class="tv">hyprware/&nbsp;&nbsp; ware/&nbsp;&nbsp; SkywareOS/&nbsp;&nbsp; SkywareOS-Testing/</div>
+        <div class="tv">hyprware/&nbsp;&nbsp; ware/&nbsp;&nbsp; SkywareOS/&nbsp;&nbsp; mainframe/</div>
+        <div class="tv">skyware-client/&nbsp;&nbsp; skyware-hub/&nbsp;&nbsp; wareserver/</div>
         <div>&nbsp;</div>
         <div><span class="tp">❯ </span><span class="cursor"></span></div>
       </div>
@@ -531,7 +544,7 @@
 <section class="repos" id="repos">
   <div class="section-header">
     <h2 class="section-title">active <span>repos</span></h2>
-    <span class="section-count">4 repositories</span>
+    <span class="section-count">7 repositories</span>
   </div>
 
   <div class="repos-grid">
@@ -608,6 +621,60 @@
       </div>
     </a>
 
+    <!-- Skyware Client -->
+    <a class="repo-card accent-peach" href="https://skywaresw.github.io/skyware-client" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bp">⛏️</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>skyware<span style="color:var(--peach)">-client</span></div>
+        <p class="repo-desc">an electron-based minecraft launcher paired with a fabric mod — skin preview, skin management, and a home page activity feed.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#f1e05a"></span> JavaScript</span>
+        <span class="repo-tag rt-peach">minecraft</span>
+        <span class="repo-tag rt-yellow">launcher</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+    <!-- Skyware Hub -->
+    <a class="repo-card accent-lavender" href="https://skywaresw.github.io/skyware-hub" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon bl">🎮</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>skyware<span style="color:var(--lavender)">-hub</span></div>
+        <p class="repo-desc">a unified game hub — one place to launch, manage, and organise your games across multiple platforms and launchers.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#f1e05a"></span> JavaScript</span>
+        <span class="repo-tag rt-lavender">gaming</span>
+        <span class="repo-tag rt-blue">hub</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
+    <!-- WareServer -->
+    <a class="repo-card accent-red" href="https://skywaresw.github.io/wareserver-manager" target="_blank">
+      <div class="repo-top">
+        <div class="repo-icon br">🖥️</div>
+        <span class="repo-arrow">↗</span>
+      </div>
+      <div>
+        <div class="repo-name"><span class="dim">SkywareSW / </span>ware<span style="color:var(--red)">server</span></div>
+        <p class="repo-desc">a local minecraft server manager — spin up, configure, and monitor minecraft servers from your own machine without the hassle.</p>
+      </div>
+      <div class="repo-footer">
+        <span class="repo-lang"><span class="lang-dot" style="background:#f1e05a"></span> JavaScript</span>
+        <span class="repo-tag rt-red">minecraft</span>
+        <span class="repo-tag rt-peach">server</span>
+        <span class="repo-visit">visit →</span>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -625,7 +692,7 @@
   </div>
 </section>
 
-<!-- ── STACK ── -->
+<!-- ── STACK ── */
 <section class="stack" id="stack">
   <div class="section-header">
     <h2 class="section-title">tech <span style="color:var(--mauve)">stack</span></h2>
@@ -643,6 +710,8 @@
     <div class="stack-item"><span class="si-dot" style="background:var(--green)"></span> Zsh</div>
     <div class="stack-item"><span class="si-dot" style="background:var(--teal)"></span> Git</div>
     <div class="stack-item"><span class="si-dot" style="background:var(--mauve)"></span> Catppuccin</div>
+    <div class="stack-item"><span class="si-dot" style="background:#f1e05a"></span> JavaScript</div>
+    <div class="stack-item"><span class="si-dot" style="background:var(--peach)"></span> Electron</div>
   </div>
 </section>
 
@@ -654,7 +723,6 @@
 <script>
   // ── generate commit grid ──
   const grid = document.getElementById('commitGrid');
-  const levels = [0,0,0,0,0,0,1,1,1,2,2,3,4];
   const classMap = ['','cl1','cl2','cl3','cl4'];
 
   for (let i = 0; i < 52 * 7; i++) {
@@ -666,7 +734,6 @@
     if (r > 0.85) lvl = 2;
     if (r > 0.93) lvl = 3;
     if (r > 0.97) lvl = 4;
-    // make last 8 weeks more active
     const week = Math.floor(i / 7);
     if (week > 43 && Math.random() > 0.5) lvl = Math.min(lvl + 1, 4);
     if (lvl > 0) cell.classList.add(classMap[lvl]);
